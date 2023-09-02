@@ -24,10 +24,12 @@ module.exports = {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
+      'secondary':'#F8FAFF'
       
     },
     backgroundColor:{
-      'primary' : 'linear-gradient(180deg, #4285F4 0%, #286DE0 100%)'
+      'primary' : 'linear-gradient(180deg, #4285F4 0%, #286DE0 100%)',
+      'secondary':'#F8FAFF'
     },
     fontFamily: {
       primary: ['Montserrat', 'sans-serif'],
