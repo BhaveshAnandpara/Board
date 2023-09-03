@@ -11,18 +11,70 @@ import profile from "../public/icons/profile.png";
 import search from "../public/icons/Search.svg";
 import RoundChart from "../public/icons/round-chart.svg";
 import Controls from "../public/icons/Controls.svg";
+import WhatsApp from "../public/icons/whatsApp-icon.png";
+import Yt from "../public/icons/Chat.png";
+import Mail from "../public/icons/Mail.png";
+import Insta from "../public/icons/Software.png";
+
+import { useState } from "react";
+import { Duplex } from "stream";
 
 export default function Dashboard() {
-    function menu(event) {
+
+    const [profileData, setprofileData] = useState(undefined)
+    const [data, setData] = useState(false)
+    
+
+    function handlebasic() {
+
+        let name = document.getElementById('name').value
+        let email = document.getElementById('email').value
+        let phone = document.getElementById('phone').value
+
+        document.getElementById('contact').style.display = 'flex'
+        document.getElementById('basic').style.display = 'none'
+
+        document.getElementById('contact-border').style.borderBottomColor = '#3F84F8'
+        document.getElementById('basic-border').style.borderBottomColor = '#D9D9D9'
+
+        setprofileData({ name, email, phone })
+
+    }
+
+    function handlecontact() {
+
+        let insta = document.getElementById('insta').value
+        let yt = document.getElementById('yt').value
+
+        let data = profileData
+        data.insta = insta
+        data.yt = yt
+
+        setprofileData(data)
+        setData(true)
+
+        document.getElementById('modalContainer').style.display = 'none'
+        document.body.style.overflow = 'auto'
 
 
+    }
+
+
+    function openModal() {
+
+        document.getElementById('modalContainer').style.display = 'flex'
+
+        window.scrollTo(0, 0)
+
+        document.body.style.height = '100vh'
+        document.body.style.overflow = 'hidden'
 
     }
 
     return (
         <>
 
-            <section className="newProfile absolute bg-[#000] bg-opacity-50 z-50 w-full h-full">
+            <section id="modalContainer" className="newProfile absolute bg-[#000] bg-opacity-50 z-50 w-full h-full  hidden">
 
                 <div className="card bg-[#fff] rounded-[20px] w-[40%] ">
 
@@ -33,11 +85,11 @@ export default function Dashboard() {
 
                     <div className="flex flex-row items-center justify-evenly w-full gap-[50px] px-[24px] pt-[24px]" >
 
-                        <div className="flex-1 border-b-4 border-b-blue min-w-[212px]  flex justify-center items-center ">
+                        <div id="basic-border" className="flex-1 border-b-4 border-b-blue min-w-[212px]  flex justify-center items-center ">
                             <p className="font-figtree text-[16px] font-[600] mb-[14px]" >Basic</p>
                         </div>
 
-                        <div className="flex-1 border-b-4 border-b-[#D9D9D9] min-w-[212px] flex justify-center items-center">
+                        <div id="contact-border" className="flex-1 border-b-4 border-b-[#D9D9D9] min-w-[212px] flex justify-center items-center">
                             <p className="font-figtree text-[16px] font-[600] mb-[14px]" >Contact</p>
                         </div>
 
@@ -45,52 +97,52 @@ export default function Dashboard() {
 
                     <div className="main">
 
-                        <div id="basic" className="hidden">
+                        <div id="basic" className="flex-col">
 
 
                             <div className="basic w-full p-[24px]">
 
                                 <p>Enter Name*</p>
-                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="" placeholder="Eg. John Doe" />
+                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="name" placeholder="Eg. John Doe" />
 
                             </div>
 
                             <div className="basic w-full p-[24px]">
 
                                 <p>Enter Email*</p>
-                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="" placeholder="Eg. John@xyz.com" />
+                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="email" placeholder="Eg. John@xyz.com" />
 
                             </div>
 
                             <div className="basic w-full p-[24px]">
 
                                 <p>Enter Phone*</p>
-                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="" placeholder="Eg. 9123456789" />
+                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="phone" placeholder="Eg. 9123456789" />
 
                             </div>
 
                             <div className="w-full  flex justify-end p-[24px]">
 
-                                <button className=" bg-[#3E84F8] py-[8px] px-[16px] rounded-[8px] flex justify-center items-center font-figtree text-[14px] text-[#fff]" > Next </button>
+                                <button className=" bg-[#3E84F8] py-[8px] px-[16px] rounded-[8px] flex justify-center items-center font-figtree text-[14px] text-[#fff]" onClick={handlebasic} > Next </button>
 
                             </div>
 
                         </div>
 
-                        <div id="contact" className="">
+                        <div id="contact" className="hidden flex-col">
 
 
                             <div className=" w-full p-[24px]">
 
                                 <p >Instagram Link <span className="text-[#999CA0]" > ( Optional ) </span></p>
-                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="" placeholder="Eg. ..instagram.com/username" />
+                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="insta" placeholder="Eg. ..instagram.com/username" />
 
                             </div>
 
                             <div className=" w-full p-[24px]">
 
                                 <p>YouTube Link <span className="text-[#999CA0]" >( Optional )</span></p>
-                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="" placeholder="Eg. ..youtebe/username" />
+                                <input className="mt-[8px] px-[16px] py-[12px] border w-full rounded-[8px] font-figtree text-[16px] text-[#999CA0]" type="text" name="" id="yt" placeholder="Eg. ..youtebe/username" />
 
                             </div>
 
@@ -99,7 +151,7 @@ export default function Dashboard() {
 
                                 <button className=" bg-[#fff] py-[8px] px-[16px] rounded-[8px] flex justify-center items-center font-figtree text-[14px] text-[#231F20] border mr-[8px]" > Back </button>
 
-                                <button className=" bg-[#3E84F8] py-[8px] px-[16px] rounded-[8px] flex justify-center items-center font-figtree text-[14px] text-[#fff]" > Done </button>
+                                <button className=" bg-[#3E84F8] py-[8px] px-[16px] rounded-[8px] flex justify-center items-center font-figtree text-[14px] text-[#fff]" onClick={handlecontact} > Done </button>
 
                             </div>
 
@@ -401,15 +453,47 @@ export default function Dashboard() {
                             </div>
                         </div>
 
-                        <div className="product-box flex-1 flex h-[232px] justify-center items-center flex-col  shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px] py-[30px] px-[40px]">
+                        <div id="profileContainer" className="product-box flex-1 flex h-[232px] justify-center items-center flex-col  shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px] py-[30px] px-[40px]">
 
-                            <div id="addBtn" className="  bg-[#F2F2F2] w-fit rounded-full" onClick={menu} >
-                                <Image src={Controls} width={50} height={50} />
-                            </div>
+                            {
+                                !data &&
+                                <>
+                                    <div id="addBtn" className="  bg-[#F2F2F2] w-fit rounded-full" onClick={openModal} >
+                                        <Image src={Controls} width={50} height={50} />
+                                    </div>
 
-                            <p className=" font-figtree font-[600] text-[16px] text-[#858585] mt-[16px]">
-                                Add Profile
-                            </p>
+                                    <p className=" font-figtree font-[600] text-[16px] text-[#858585] mt-[16px]">
+                                        Add Profile
+                                    </p>
+                                </>
+
+                            }
+
+                            {
+
+                                data &&
+
+                                <>
+
+                                    <p className=" font-figtree text-[24px] font-bold w-full flex justify-start items-center mb-[58px]" > {profileData.name} </p>
+
+                                    <div className="socials flex justify-between items-center flex-wrap flex-2 w-full ">
+
+                                        <div className="flex-[50%] flex justify-start items-center flex-row" >  <div className="h-[30px] w-[30px] mr-[12px] rounded-full bg-[#E9F9EB] flex justify-center items-center" > <Image src={WhatsApp} width={24} height={24} /> </div> <p className=" underline font-figtree text-[14px]" >{ profileData.phone }</p> </div>
+
+                                        <div className="flex-[50%] flex justify-start items-center flex-row" >  <div className="h-[30px] w-[30px] mr-[12px] rounded-full bg-[#E9F9EB] flex justify-center items-center" > <Image src={Insta} width={24} height={24} /> </div> <p className=" underline font-figtree text-[14px]" >{ profileData.insta }</p> </div>
+
+                                        <div className="flex-[50%] flex justify-start items-center flex-row" >  <div className="h-[30px] w-[30px] mr-[12px] rounded-full bg-[#E9F9EB] flex justify-center items-center" > <Image src={Mail} width={24} height={24} /> </div> <p className=" underline font-figtree text-[14px]" >{ profileData.email }</p> </div>
+
+                                        <div className="flex-[50%] flex justify-start items-center flex-row" >  <div className="h-[30px] w-[30px] mr-[12px] rounded-full bg-[#E9F9EB] flex justify-center items-center" > <Image src={Yt} width={24} height={24} /> </div> <p className=" underline font-figtree text-[14px]" >{ profileData.yt }</p> </div>
+
+
+                                    </div>
+
+                                </>
+
+                            }
+
                         </div>
                     </div>
                 </main>
