@@ -8,16 +8,18 @@ import UserIcon from '../public/icons/user.svg'
 import NotificationIcon from '../public/icons/notification.svg'
 import profile from '../public/icons/profile.png'
 import search from '../public/icons/Search.svg'
+import RoundChart from '../public/icons/round-chart.svg'
+import Controls from '../public/icons/Controls.svg'
 
 export default function Dashboard() {
 
     return (
         <>
-            <section className="dashboard flex-row justify-start py-[3vh] px-[43px] gap-[67px]">
+            <section className="dashboard flex-row justify-start items-stretch py-[3vh] px-[43px] gap-[67px] ">
 
                 <Navbar />
 
-                <main className=" min-h-[90vh] w-[100%] min-w-max  flex justify-start items-start flex-col gap-[40px]" >
+                <main className=" min-h-[90vh] w-[100%] min-w-max  flex justify-between items-start flex-col gap-[20px]" >
 
                     <div className="header flex justify-between items-center flex-row w-full">
 
@@ -43,7 +45,7 @@ export default function Dashboard() {
 
                     <div className="cards flex flex-row gap-[17px] w-full ">
 
-                        <div className="card max-w-[230px] flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
+                        <div className="card  flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
 
                             <div className="icon bg-[#7FCD93] w-[30px] h-[30px] flex justify-center items-center rounded-full mb-[8px]">
                                 <Image src={RevenueIcon} height={18} width={18} className=" translate-y-[-2px]" />
@@ -61,7 +63,7 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="card max-w-[230px] flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
+                        <div className="card  flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
 
                             <div className="icon bg-[#DEBF85] w-[30px] h-[30px] flex justify-center items-center rounded-full mb-[8px]">
                                 <Image src={TransactionIcon} height={18} width={18} />
@@ -79,7 +81,7 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="card max-w-[230px] flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
+                        <div className="card  flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
 
                             <div className="icon bg-[#ECA4A4] w-[30px] h-[30px] flex justify-center items-center rounded-full mb-[8px]">
                                 <Image src={LikesIcon} height={18} width={18} />
@@ -97,7 +99,7 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="card max-w-[230px] flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
+                        <div className="card  flex-1 py-[18px] px-[26px] shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px]">
 
                             <div className="icon bg-[#A9B0E5] w-[30px] h-[30px] flex justify-center items-center rounded-full mb-[8px]">
                                 <Image src={UserIcon} height={18} width={18} />
@@ -241,6 +243,74 @@ export default function Dashboard() {
 
                         </div>
 
+
+                    </div>
+
+                    <div className="flex flex-row justify-between w-full items-center gap-[40px] " >
+
+                        <div className="product-box flex-1 shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px] py-[30px] px-[40px]">
+
+                            <div className="header flex flex-row justify-between items-center mb-[24px]">
+
+                                <p className="font-primary font-bold text-[18px]" >Top Products</p>
+                                <span className="text-[#858585] font-primary text-[12px]" >May - June 2021</span>
+
+                            </div>
+
+                            <div className="flex flex-row gap-[62px]" >
+
+                                <Image src={RoundChart} width={100} height={100} />
+
+                                <div className="stats flex justify-center items-start flex-col">
+
+                                    <div className=" flex items-start flex-row justify-start"  >
+
+                                        <div className="dot w-[10px] h-[10px] mr-[10px] bg-[#98D89E] rounded-full translate-y-1">  </div>
+                                        <div className="text">
+                                            <p className=" font-primary font-bold text-[14px]" >Basic Tees</p>
+                                            <p className=" font-secondary font-normal text-[#858585] text-[12px]" >55%</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div className=" flex items-start flex-row justify-start"  >
+
+                                        <div className="dot w-[10px] h-[10px] mr-[10px] bg-[#F6DC7D] rounded-full translate-y-1">  </div>
+                                        <div className="text">
+                                            <p className=" font-primary font-bold text-[14px]" >Custom Short Pants</p>
+                                            <p className=" font-secondary font-normal text-[#858585] text-[12px]" >31%</p>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div className=" flex items-start flex-row justify-start"  >
+
+                                        <div className="dot w-[10px] h-[10px] mr-[10px] bg-[#EE8484] rounded-full translate-y-1">  </div>
+                                        <div className="text">
+                                            <p className=" font-primary font-bold text-[14px]" >Super Hoodies</p>
+                                            <p className=" font-secondary font-normal text-[#858585] text-[12px]" >14%</p>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div className="product-box flex-1 flex h-[232px] justify-center items-center flex-col  shadow border-solid border-[#e0e0e0] border-2 bg-[#fff] rounded-[20px] py-[30px] px-[40px]">
+
+                            <div className=" bg-[#F2F2F2] w-fit rounded-full" >
+                                <Image src={Controls} width={50} height={50} />
+                            </div>
+
+                            <p className=" font-figtree font-[600] text-[16px] text-[#858585] mt-[16px]" >Add Profile</p>
+
+                        </div>
 
                     </div>
 
