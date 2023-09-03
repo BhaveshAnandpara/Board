@@ -74,7 +74,7 @@ export default function SignIn() {
                                     <div
                                         id="g_id_onload"
                                         data-client_id="1070463417158-i6pjltaqiti28f3on6bhl8qhhuklgqqk.apps.googleusercontent.com"
-                                        data-login_uri="http://localhost:3000/Dashboard"
+                                        data-login_uri="https://board-cyan.vercel.app/Dashboard"
                                         data-auto_prompt="false"
                                     ></div>
                                     <div
