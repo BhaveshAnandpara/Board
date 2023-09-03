@@ -36,7 +36,7 @@ export default function SignIn() {
             <Script src="https://accounts.google.com/gsi/client" async />
 
             <section className=" flex-row justify-start overflow-hidden " >
-                <div className="blue-section w-[50%] h-[100vh]  ">
+                <div className=" w-[50%] h-[100vh]  ">
                     <div className="trapezium"></div>
 
                     <p className="logo mt-[60px] ml-[72px]">LOGO</p>

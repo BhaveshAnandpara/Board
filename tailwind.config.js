@@ -34,6 +34,8 @@ module.exports = {
     fontFamily: {
       primary: ['Montserrat', 'sans-serif'],
       secondary: ['Lato', 'sans-serif'],
+      open_sans: ['Open Sans'],
+      figtree: ['Figtree', 'sans-serif'],
     },
     fontSize:{
       title : '36px',

@@ -29,9 +29,12 @@ section {
 
 }
 
-/* .blue-section{
+
+
+.blue-section{
     background:  linear-gradient(180deg, #4285F4 0%, #286DE0 100%);
-} */
+    height : calc(100vh - 80px);
+}
 
 .trapezium {
     z-index: -10;
@@ -96,4 +99,8 @@ section {
     background: #EAEAEA;
     outline: none;
 
+}
+
+.shadow{
+    filter: drop-shadow(3px 4px 11px rgba(98, 98, 98, 0.15));
 }
